@@ -11,7 +11,11 @@ class ShowAllDealFilter implements IDealFilter{
 class BroadbandDealFilter implements IDealFilter{
     filter(deals = []){
         var d = [];
-        d.push(deals[0]);
+        
+        deals.forEach((deal)=>{
+            if (deal.productTypes.indexOf("Broadband")==0)
+                d.push(deal);
+        });
         return d;
 
     }
