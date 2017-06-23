@@ -11,8 +11,11 @@ export class AppComponent {
 
   constructor(http: Http) {
     http.get('assets/deals.json')
-      .map(res => res.json())
-      .subscribe(deals => this.deals = deals);
+//      .map(res => res.json())
+//      .subscribe(deals => this.deals = deals);
+
+      .subscribe(deals => this.deals = deals.json()['deals']);
+
   }
 
   title = "start"
