@@ -17,7 +17,12 @@ export class AppComponent {
       .subscribe(deals => this.deals = deals.json()['deals']);
 
   }
+  showBroadband:boolean = false;
 
+  onToggleBroadband(){
+    this.showBroadband = !this.showBroadband;
+  }
+  
   title = "start"
   deals = []
 
