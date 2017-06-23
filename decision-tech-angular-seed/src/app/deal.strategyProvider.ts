@@ -13,11 +13,14 @@ class BroadbandDealFilter implements IDealFilter{
         var d = [];
         d.push(deals[0]);
         return d;
+
     }
 }
 
 export class DealStrategyProvider{
     getProvider(showBroadband:boolean){
+        if (showBroadband)
+            return new BroadbandDealFilter();
         return new ShowAllDealFilter();
     }
 };

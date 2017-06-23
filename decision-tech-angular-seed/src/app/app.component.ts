@@ -15,8 +15,8 @@ export class AppComponent {
 //      .map(res => res.json())
 //      .subscribe(deals => this.deals = deals);
 
-      .subscribe(deals => this.deals = this.filter.filter(deals.json()['deals']));
-
+      .map(res => res.json())
+      .subscribe(deals => {this.deals = this.allDeals = deals['deals']});
   }
 
   showBroadband:boolean = false;
@@ -24,14 +24,22 @@ export class AppComponent {
   
   onToggleBroadband(){
     this.showBroadband = !this.showBroadband;
+    this.refreshData();
+  }
+
+  private refreshData(){
+    var f2 = this.dealFilterProvider.getProvider(
+      this.showBroadband
+    );
+    this.deals = f2.filter(this.allDeals);
+    //this.deals = this.allDeals;
   }
 
   dealFilterProvider = new DealStrategyProvider();
-  filter = this.dealFilterProvider.getProvider(
-    this.showBroadband
-  );
+
  
   title = "start"
+  allDeals =[];
   deals = []
 
 }
