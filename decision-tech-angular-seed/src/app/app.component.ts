@@ -20,16 +20,22 @@ export class AppComponent {
   }
 
   showBroadband:boolean = false;
-
+  showTV:boolean = false;
   
   onToggleBroadband(){
     this.showBroadband = !this.showBroadband;
     this.refreshData();
   }
 
+  onToggleTV(){
+    this.showTV = !this.showTV;
+    this.refreshData();
+  }
+
   private refreshData(){
     var f2 = this.dealFilterProvider.getProvider(
-      this.showBroadband
+      this.showBroadband,
+      this.showTV
     );
     this.deals = f2.filter(this.allDeals);
     //this.deals = this.allDeals;
